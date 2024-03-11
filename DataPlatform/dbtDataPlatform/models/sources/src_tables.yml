@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: source_data  # Logical name for the source, can be anything meaningful
+    database: SourceData  # The database name where your source table resides
+    schema: dbo  # The schema name where your source table resides
+    tables:
+      - name: Customers  # The exact table name as it appears in the database
+      - name: OrderHeaders  # The exact table name as it appears in the database
+      - name: OrderLines  # The exact table name as it appears in the database
+      - name: Products  # The exact table name as it appears in the database
+      - name: ProductCategories  # The exact table name as it appears in the database
+

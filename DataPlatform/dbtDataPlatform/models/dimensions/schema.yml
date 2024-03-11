@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "a model for dim customers"
+    columns:
+      - name: CustomerID
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: "Dim products model that combines both products and cateogires tables from SourceData"
+    columns:
+      - name: ProductID
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null

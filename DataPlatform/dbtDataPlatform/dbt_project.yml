@@ -1,13 +1,12 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'data_platform'
+name: 'dbtDataPlatform'
 version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'data_platform'
+profile: 'dbtDataPlatform'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -23,7 +22,6 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
-
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -31,7 +29,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  data_platform:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+  dbtDataPlatform:
+    # Applies configurations to all models within the dbtDataPlatform namespace
+    +schema: 'dbo'  # Sets the default schema for all models to 'dbo'
+    dimensions:
+      +schema: 'analytics'  # Overrides the default schema for models under the dimensions directory
+      +materialized: 'table'  # It's common to materialize dimension tables as tables
+    facts:
+      +schema: 'analytics'  # Optionally, specify a schema for fact tables if different from dimensions
+      +materialized: 'table'  # Fact tables are also commonly materialized as tables
+   
